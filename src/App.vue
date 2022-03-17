@@ -1,16 +1,12 @@
 <template>
-  <div>
-    <LoadBtn :text="'提交'" :load="'loading'" />
+  <div class="App">
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import LoadBtn from "./components/loadBtn";
 export default {
   name: "VueApp",
-  components: {
-    LoadBtn,
-  },
 
   data() {
     return {};
