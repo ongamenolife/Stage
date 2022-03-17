@@ -5,11 +5,19 @@ export default new VueRouter({
   routes: [
     {
       path: "/",
-      component: () => import("../components/Home/Home.vue"),
-    },
-    {
-      path: "/btn",
-      component: () => import("../components/Btn/loadBtn.vue"),
+      component: () => import("../view/Main.vue"),
+      children: [
+        {
+          path: "/home",
+          name: "home",
+          component: () => import("../view/Home"),
+        },
+        {
+          path: "/user",
+          name: "user",
+          component: () => import("../view/User"),
+        },
+      ],
     },
   ],
 });
