@@ -10,10 +10,12 @@ import "element-ui/lib/theme-chalk/index.css";
 import store from "./store/index.js";
 import router from "./router/index.js";
 import VueRouter from "vue-router";
-
+import http from "axios";
+import "./api/moke";
 //挂载
 Vue.use(VueRouter);
 Vue.use(ElementUI);
+Vue.prototype.$http = http;
 Vue.config.productionTip = false;
 
 new Vue({

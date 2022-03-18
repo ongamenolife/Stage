@@ -11,15 +11,19 @@
   >
     <h3>{{ isCollapse ? "后台" : "通用后台管理系统" }}</h3>
     <el-menu-item
-      @click="cilckMenu(item)"
       v-for="item in noChildren"
+      @click="cilckMenu(item)"
       :key="item.path"
       :index="item.path"
     >
       <i :class="'el-icon-' + item.icon"></i>
       <span slot="title">{{ item.label }}</span>
     </el-menu-item>
-    <el-submenu v-for="item in hasChildren" :key="item.path" :index="item.path">
+    <el-submenu
+      v-for="(item, index) in hasChildren"
+      :key="item.path"
+      :index="index.toString()"
+    >
       <template slot="title">
         <i :class="'el-icon-' + item.icon"></i>
         <span slot="title">{{ item.label }}</span>
@@ -28,7 +32,9 @@
         v-for="(subItem, subIndex) in item.children"
         :key="subItem.path"
       >
-        <el-menu-item :index="subIndex">{{ subItem.label }}</el-menu-item>
+        <el-menu-item :index="subIndex.toString()">{{
+          subItem.label
+        }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
