@@ -11,7 +11,7 @@ import store from "./store/index.js";
 import router from "./router/index.js";
 import VueRouter from "vue-router";
 import http from "axios";
-import "./api/moke";
+import "./api/mock.js";
 //挂载
 Vue.use(VueRouter);
 Vue.use(ElementUI);
