@@ -23,7 +23,9 @@
         :inline="true"
         ref="form"
       >
-        <el-button type="primary" @click="getList">搜索</el-button>
+        <el-button type="primary" @click="getList(searchForm.keyword)"
+          >搜索</el-button
+        >
       </common-form>
     </div>
     <common-table
@@ -126,7 +128,7 @@ export default {
           width: 320,
         },
       ],
-      config: { page: 1, total: 30 },
+      config: { page: 1, total: 30, loading: true },
     };
   },
   methods: {
@@ -162,8 +164,8 @@ export default {
       getUser({
         page: this.config.page,
         name,
-      }).then((res) => {
-        this.tabelData = res.data.list.map((item) => {
+      }).then(({ data: res }) => {
+        this.tabelData = res.list.map((item) => {
           item.sexLabel = item.sex === 0 ? "女" : "男";
           return item;
         });
@@ -184,7 +186,7 @@ export default {
       })
         .then(() => {
           const id = row.id;
-          this.$http.get("user/del", {
+          this.$http.post("user/del", {
             params: { id },
           });
         })

@@ -13,10 +13,14 @@
         </template>
       </el-table-column>
       <el-table-column label="操作" min-width="180">
-        <el-button @click="handelEdit" type="primary" size="mini"
-          >编辑</el-button
+        <template slot-scope="scope">
+          <el-button @click="handelEdit(scope.row)" type="primary" size="mini"
+            >编辑</el-button
+          >
+          <el-button @click="handelDel(scope.row)" type="danger" size="mini"
+            >删除</el-button
+          ></template
         >
-        <el-button @click="handelDel" type="danger" size="mini">删除</el-button>
       </el-table-column>
     </el-table>
     <el-pagination
