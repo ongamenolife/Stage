@@ -66,6 +66,7 @@
 import { getData } from "../../api/data.js";
 import * as echarts from "echarts";
 export default {
+  name: "home",
   data() {
     return {
       userImg: require("../../assets/images/user.png"),

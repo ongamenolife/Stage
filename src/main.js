@@ -12,6 +12,17 @@ import router from "./router/index.js";
 import VueRouter from "vue-router";
 import http from "axios";
 import "./api/mock.js";
+
+router.beforeEach((to, from, next) => {
+  store.commit("getToken");
+  const token = store.state.user.token;
+  if (!token && to.name !== "login") {
+    next({ name: "login" });
+  } else {
+    next();
+  }
+});
+
 //挂载
 Vue.use(VueRouter);
 Vue.use(ElementUI);
